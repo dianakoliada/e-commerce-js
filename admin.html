@@ -1,0 +1,89 @@
+<style>
+.admin-holder {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+form {
+    max-width: 400px;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+br {
+    clear: both;
+}
+
+</style>
+<div class="admin-holder">
+    <form action="https://64fecbcdf8b9eeca9e291654.mockapi.io/catalog" method="POST">
+        <input type="text" name="title" placeholder="Назва товару"><br><br>
+        <input type="text" name="img" placeholder="Назва картинки" value="1.webp"><br><br>
+        <input type="text" name="price" placeholder="Ціна"><br><br>
+        <input type="text" name="oldprice" placeholder="Стара ціна"><br><br>  
+        
+        <select name="catid">
+            <option value="1">iPhone</option>
+            <option value="2">MacBook</option>
+            <option value="3">Apple Watch</option>
+            <option value="4">iPad</option>
+            <option value="5">Airpods</option>
+            <option value="6">Аксесуари</option>
+        </select><br><br>
+    
+        <p>Чи виводити в блоці "Гарячі пропозиції"</p>
+        <label><input type="radio" name="hotoffer" value="yes"> Так</label>
+        <label><input type="radio" name="hotoffer" value="no" checked> Ні</label>
+        <br><br>
+    
+        <button>Добавити товар</button>
+    </form>
+    
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <form action="https://64fecbcdf8b9eeca9e291654.mockapi.io/categories" method="POST">
+        <input type="text" name="title" placeholder="Назва категорії"><br><br>
+        <button>Добавити категорію</button>
+    </form>
+</div>
