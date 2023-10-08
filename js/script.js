@@ -1,6 +1,6 @@
 // Оголошуємо об'єкт shop
 const shop = function () {
-   
+
    /**
     * Функції помічники
     */
@@ -25,9 +25,16 @@ const shop = function () {
       // if (res == null) {
       //    res = [];
       // }
-      
+
       // return res;
    }
+
+   // Перевірка товару на дублікат
+   this.isProductInCart = (cart, productId) => {
+      // Повертаю булеве значення існування товару в корзині
+      return cart.some(item => item.id === productId);
+   }
+
 
    // Змінні для роботи об'єкту
    this.catalog = document.querySelector('#catalog-cards');
@@ -38,7 +45,7 @@ const shop = function () {
    this.cartProductNum = document.querySelectorAll('.js-cart-added-summ');
 
    // Масив обранних товарів
-   this.cart = this.getLocal('cart');  
+   this.cart = this.getLocal('cart');
 
    // Посилання для api
    this.apiLink = 'https://64fecbcdf8b9eeca9e291654.mockapi.io/';
@@ -47,9 +54,7 @@ const shop = function () {
 
 
 
-
-
-   // Виводимо товари в html
+   // Виводимо всі товари в html
    this.diplayProducts = (array) => {
 
       // Очищуємо карточки перед виводом
@@ -68,7 +73,7 @@ const shop = function () {
 
          // Перебираємо товари для виводу
          array.forEach(({ img, title, price, oldprice, hotoffer, catid, id }) => {
-   
+
             // Виводимо товари 
             this.catalog.insertAdjacentHTML('beforeend', `<div class="card-product">
                                                 <div class="card-product__img-hold">
@@ -84,31 +89,31 @@ const shop = function () {
       }
 
    }
-   
 
-   // Вивід категорій в html
+
+   // Вивід всіх категорій в html
    this.diplayCategory = (array) => {
-      
+
       //Виводимо категорії
       this.category.insertAdjacentHTML('beforeend', `<a href="#" class="dropdown-item">Скинути вибір</a>`)
 
       // Перебираємо категорії
-      array.forEach(({id, title}) => {
+      array.forEach(({ id, title }) => {
 
-            //Виводимо категорії
-            this.category.insertAdjacentHTML('beforeend', `<a href="${id}" class="dropdown-item">${title}</a>`)
+         //Виводимо категорії
+         this.category.insertAdjacentHTML('beforeend', `<a href="${id}" class="dropdown-item">${title}</a>`)
 
       })
    };
 
 
-   // Підраховуємо та виводимо кіл-ть товару
+   // Підраховуємо та виводимо цифрою загальну кіл-ть товару
    this.displayCountProducts = (array) => {
 
       // Виводимо цифру в html
       this.countProducts.innerHTML = array.length;
    }
-      
+
 
    // Вивід товарів до каталогу
    this.viewPorducts = () => {
@@ -130,12 +135,12 @@ const shop = function () {
 
       // Витягуємо категорії з бази даних
       fetch(this.apiCategories)
-      .then(res => res.json())
-      .then((categories) => {
+         .then(res => res.json())
+         .then((categories) => {
 
-         // Виводимо категорії
-         this.diplayCategory(categories);
-      })  
+            // Виводимо категорії
+            this.diplayCategory(categories);
+         })
    }
 
 
@@ -153,13 +158,13 @@ const shop = function () {
 
       // Витягуємо товари з бази даних
       fetch(this.apiCatalog + '?catid=' + idCategory)
-      .then(res => res.json())
-      .then((products) => {
+         .then(res => res.json())
+         .then((products) => {
 
-         // Виводим товари
-         this.diplayProducts(products);
+            // Виводим товари
+            this.diplayProducts(products);
 
-      })
+         })
    }
 
 
@@ -169,17 +174,23 @@ const shop = function () {
       // Збираємо дані про товар
       const product = el.dataset;
 
-      // Добавляємо товар до масива
-      this.cart.push(product);
+      if (!this.isProductInCart(this.cart, product.id)) {
 
-      // Виводимо товари в корзину
-      this.viewCartProducts();       
+         // Добавляємо товар до масива
+         this.cart.push(product);
+
+         // Виводимо товари в корзину
+         this.viewCartProducts();
+
+         // Оновлюємо число доданих товарів в корзині
+         this.setCountCartProducts();
+      }
 
    }
 
 
    // Функція виводу кількості добавлених товарів
-   this.setCountCartProducts = () => { 
+   this.setCountCartProducts = () => {
 
       // Створюємо змінну де буде зберігатись кіл-ть доданних товарів
       this.totalItemCount = 0;
@@ -193,7 +204,7 @@ const shop = function () {
 
       //Виводимо результат в html
       this.cartProductNum.forEach((el) => {
-         el.innerHTML = this.totalItemCount; 
+         el.innerHTML = this.totalItemCount;
       })
    }
 
@@ -203,30 +214,30 @@ const shop = function () {
 
       //отримуємо атрибут із елемента (plus or minus)
       this.btnTypeVal = this.el.getAttribute('data-type');
-            
+
       //отримуємо атрибут з кнопки, щоб зв'язати з інпутом
       this.dataInputVal = this.el.getAttribute('data-input');
-            
+
       //????????document.querySelector???????  зберігаю необхідний інпут
       this.input = document.querySelector(this.dataInputVal);
-            
+
       // Отримуємо поточне значення інпута
       this.count = parseInt(this.input.value);
-            
+
       if (this.btnTypeVal === 'plus') {
          this.input.value++;
       }
-      
+
       if (this.btnTypeVal === 'minus' && this.count > 1) {
          this.input.value--;
       }
-      
+
       // Ключ в масиві cart
       this.cartIndex = this.el.getAttribute('data-index');
-            
+
       // Оновлювати цифру в масиві віносно товару
       this.cart[this.cartIndex].count = this.input.value;
-      
+
       // Зберігати корзину в localstorage
       this.saveLocal('cart', this.cart);
 
@@ -240,7 +251,7 @@ const shop = function () {
 
       // Очищуємо від старого результату
       this.displayProductCart.innerHTML = '';
-      
+
       // Зберігаємо масив до localstorage
       this.saveLocal('cart', this.cart);
 
@@ -250,9 +261,9 @@ const shop = function () {
          // Виводимо повідомлення NO RESULTS
          this.displayProductCart.innerHTML = `<h2 class="no-result">Товарів не знайдено</h2>`;
       } else {
-         this.cart.forEach(({id, title, img, price, count}, index) => {
+         this.cart.forEach(({ id, title, img, price, count }, index) => {
             this.displayProductCart.insertAdjacentHTML('beforeend', `<div class="cart-added-list__item">
-                                                                           <button class="cart-added-list__item-btn-delete btn-light" data-index="${index}"><svg class='icon icon-close'>
+                                                                           <button class="cart-added-list__item-btn-delete btn-light js-btn-delete" data-index="${index}"><svg class='icon icon-close'>
                                                                                  <use xlink:href='#icon-close'></use>
                                                                               </svg></button>
                                                                            <img src="img/catalog/${img}" alt="" class="cart-added-list__item-img">
@@ -269,7 +280,7 @@ const shop = function () {
          })
       }
    }
-   
+
 
    // Слідкую за натиском по корзинці в картці товару
    this.onPressCartBtn = (e) => {
@@ -277,7 +288,7 @@ const shop = function () {
 
       // Поточний елемент по якому був клік
       let el = e.target;
-      
+
       // Перевіряємо чи елемент по якому ми клікнули є use
       if (el.nodeName == 'use')
          el = el.parentNode.parentNode;
@@ -292,19 +303,55 @@ const shop = function () {
          // Додаємо обраний товар в масив та виводимо його в корзинку
          this.addNewProduct(el);
       }
-   } 
+   }
+
+   // Функція видалення товару з корзини
+   this.removeProductFromCart = (item) => {
+
+      // Отримуємо id товару, який треба видалити
+      this.idToDelete = item.dataset.index;
+
+      // Видаляємо товар з масива cart
+      this.cart.splice(this.idToDelete, 1);
+
+      // Виводимо товари
+      this.viewCartProducts();
+
+      // Оновлюємо число товарів в корзині
+      this.setCountCartProducts();
+
+   }
 
 
-   // Слідкуємо за кнопками добавлених товарів
-   this.displayProductCart.onclick = (event) => {
-
+   // Функція для обробок кліків на елементі корзини
+   this.handleProductCartClick = (event) => {
+   // Обробник зміни кіл-ті товару
       // Поточний елемент по якому був клік
       this.el = event.target;
-     
-      // Перевіряєо чи клік був по кнопці кількості
+      // Перевіряєо чи клік був по кнопкам +- кіл-ті товару
       if (this.el.classList.contains('js-count')) {
+         // Якщо так, запускаю функцію зміни кіл-ті товару
          this.onChangeProductQuantity();
       }
+
+      // Обробник видалення товару
+      // Поточний елемент по якому був клік
+      let item = event.target;
+      // Перевіряємо чи елемент по якому ми клікнули є use
+      if (item.nodeName == 'use')
+         item = item.parentNode.parentNode;
+
+      // Перевіряємо чи елемент по якому ми клікнули є svg
+      if (item.nodeName == 'svg')
+         item = item.parentNode;
+
+      // Перевіряєо чи клік був по потрібно нам елементі
+      if (item.classList.contains('js-btn-delete')) {
+
+         // Видаляю обраний товар
+         this.removeProductFromCart(item);
+      }
+
    }
 
 
@@ -323,8 +370,11 @@ const shop = function () {
       // Слідкуємо за кліком по категоріях
       this.category.onclick = this.setCategoryProducts;
 
-       // Слідкуємо за кліком по картці продукту
+      // Слідкуємо за кліком по картці продукту
       this.catalog.onclick = this.onPressCartBtn;
+
+      // Слідкую за обробниками подій
+      this.displayProductCart.onclick = this.handleProductCartClick;
 
       // Оновлюємо кількість доданих товарів в корзину при завантаженні сторінки
       this.setCountCartProducts();
@@ -343,4 +393,3 @@ shopInit.init();
 
 
 // Видалення товарів з корзини
-// Перевірка товарів на дублікат
