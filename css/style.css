@@ -238,6 +238,15 @@ svg {
    gap: var(--nav-padding);
 }
 
+@media (max-width: 1100px) {
+   .menu {
+      display: flex;
+      flex-direction: column;
+      gap: var(--nav-padding);
+   }
+
+}
+
 .menu .menu__li {}
 
 .menu .menu__link {
@@ -257,6 +266,12 @@ svg {
    display: flex;
    justify-content: space-between;
    align-items: center;
+}
+
+@media (max-width: 1100px) {
+   .navigation .navigation__hold {
+      align-items: baseline;
+   }
 }
 
 .navigation .navigation__left,
@@ -327,6 +342,12 @@ svg {
    padding: 50px 0px var(--block-padding);
 }
 
+@media (max-width: 450px) {
+   .catalog .catalog__header {
+      align-items: baseline;
+   }
+}
+
 .catalog .catalog__products-summ {
    font-size: 16px;
    color: #6C798E;
@@ -336,13 +357,39 @@ svg {
 
 .catalog .catalog__content {
    display: flex;
+   justify-content: center;
    flex-wrap: wrap;
    gap: 35px;
+}
+
+@media (max-width: 999px) {
+   .catalog .catalog__content {
+      gap: 25px;
+   }
 }
 
 .catalog .catalog__content .card-product {
    width: calc(24% - 16px);
 }
+
+@media (max-width: 1055px) {
+   .catalog .catalog__content .card-product {
+      width: 30%;
+   }
+}
+
+@media (max-width: 776px) {
+   .catalog .catalog__content .card-product {
+      width: 33%;
+   }
+}
+
+@media (max-width: 576px) {
+   .catalog .catalog__content .card-product {
+      width: 60%;
+   }
+}
+
 
 .catalog .catalog__bottom {
    text-align: center;
@@ -352,16 +399,17 @@ svg {
 /*
  * Карточка каталогу
  */
-.card-product {
+/* .card-product {
    --link: #000;
    --hover-link: var(--pr);
    max-width: 360px;
-}
+} */
 
 .card-product .card-product__img-hold {}
 
 .card-product .card-product__img {
    max-width: 100%;
+   min-width: 360px;
    border-radius: 15px;
 }
 
@@ -506,6 +554,7 @@ svg {
 
 .card-product .card-product__img {
    max-width: 100%;
+   min-width: 200px;
    max-height: 100%;
    border-radius: 15px;
    object-fit: cover;
@@ -573,10 +622,7 @@ svg {
    color: var(--hover-link);
 }
 
-
-
-
-/**
+/*
  * Блок гарячих пропозиції
  */
 .hot-offers {}
@@ -606,16 +652,10 @@ svg {
 }
 
 .hot-offers .hot-offers__cards .card-product {
-   width: 33%;
+   width: 60%;
 }
 
-
-
-
-
-
-
-/**
+/*
  * Галерея з соц. мереж
  */
 .gallery {
@@ -665,12 +705,7 @@ svg {
    box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.14);
 }
 
-
-
-
-
-
-/**
+/*
  * Список добавлених товарів
  */
 .cart-added-list {
@@ -872,10 +907,7 @@ svg {
    text-align: center;
 }
 
-
-
-
-/**
+/*
  * Кнопки соц мереж
  */
 .social {
@@ -920,9 +952,7 @@ svg {
    --hover-color: #d40000;
 }
 
-
-
-/**
+/*
  * Footer
  */
 .footer {
@@ -963,10 +993,7 @@ svg {
    padding-top: 8px;
 }
 
-
-
-
-/**
+/*
  * Cтатична сторінка
  */
 .article {}
@@ -1045,8 +1072,6 @@ svg {
 .article .page-content h3 {
    font-size: 32px;
 }
-
-
 
 .input-group {
    --max-width: 100%;
