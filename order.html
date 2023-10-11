@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Apple store</title>
+   <title>Магазин техніки apple</title>
 
    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
@@ -87,13 +87,13 @@
             <div class="navigation__left">
                <ul class="menu navigation__item-list">
                   <li class="menu__li navigation__item">
-                     <a href="index.html" class="menu__link link-hover">Home</a>
+                     <a href="index.html" class="menu__link link-hover">Головна</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="delivery.html" class="menu__link link-hover">Delivery and payment</a>
+                     <a href="delivery.html" class="menu__link link-hover">Доставка і оплата</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="contacts.html" class="menu__link link-hover">Contacts</a>
+                     <a href="contacts.html" class="menu__link link-hover">Контакти</a>
                   </li>
                </ul>
             </div>
@@ -123,62 +123,38 @@
       </div>
    </div>
 
+
+
+
    <div class="article">
       <div class="container">
 
-         <h2 class="article__title">Delivery and payment</h2>
+         <h2 class="article__title">Доставка і оплата</h2>
 
          <div class="page-content">
-            <p>
-               In our online Apple store, we do all our best to make the purchase process convenient and affordable for
-               our customers.
-               One of the most important aspects of this process is delivery and payment.
-            </p>
-            <h3>Delivery</h3>
-            <p>
-               We offer fast and reliable delivery of Apple products to your door. Our delivery specialists make sure
-               that your
-               purchase is delivered to you as soon as possible, so you can enjoy your new Apple gadgets almost
-               immediately.
-            </p>
-            <h3>Delivery options</h3>
-            <p>
-               We offer several delivery options for your convenience. You can choose one of them making your order:
-            </p>
-            <ul>
-               <li><strong>Courier delivery:</strong>
-                  Our couriers will bring your order directly to your home or your office.
-                  You can specify a delivery time that is convenient for you.
-               </li>
-               <li><strong>Self-pickup:</strong>
-                  If you want to pick your order up, you can select the pickup point, where your purchase will be
-                  waiting for you.
-               </li>
-            </ul>
-            <h3>Payment</h3>
-            <p>
-               We do all our best to make the payment process for your order simple and secure. We accept various
-               methods of payment,
-               including:
-            </p>
-            <ul>
-               <li><strong>Payment by credit card:</strong>
-                  You can pay for your order with credit or debit card. Your financial data is protected by the highest
-                  level of security.
-               </li>
-               <li><strong>Cash payment upon receipt:</strong>
-                  You can pay for your order in cash when you receive it from the courier.
-               </li>
-               <li><strong>Online payment:</strong>
-                  You can also use online payments for convenience.
-               </li>
-            </ul>
-            <p>
-               We believe that each our clients deserves the best service, so we do all our best to provide you with
-               fast delivery and
-               secure payment. Thank you for choosing our online Apple store!
-            </p>
+            <p>Будь ласка, заповніть форму для оформлення вашого замовлення:</p>
+
+            <form id="order-form">
+               <div class="form-group">
+                  <label for="name">Ім'я:</label>
+                  <input type="text" id="name" name="name" required>
+               </div>
+
+               <div class="form-group">
+                  <label for="phone">Телефон:</label>
+                  <input type="tel" id="phone" name="phone" required>
+               </div>
+
+               <div class="form-group">
+                  <label for="address">Адреса доставки:</label>
+                  <textarea id="address" name="address" rows="4" required></textarea>
+               </div>
+
+               <button type="submit">Замовити</button>
+            </form>
          </div>
+
+
       </div>
    </div>
 
@@ -188,48 +164,52 @@
    <div class="footer">
       <div class="container">
          <a href="index.html" class="logo">I-happy</a>
+
          <ul class="navbar-nav menu">
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="index.html#catalog">Catalog</a>
+               <a class="nav-link menu__link link-hover" href="index.html#catalog">Каталог</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="about.html">About us</a>
+               <a class="nav-link menu__link link-hover" href="about.html">Про нас</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="delivery.html">Delivery and payment</a>
+               <a class="nav-link menu__link link-hover" href="delivery.html">Доставка і оплата</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="contacts.html">Contacts</a>
+               <a class="nav-link menu__link link-hover" href="contacts.html">Контакти</a>
             </li>
          </ul>
+
          <div class="footer__social">
             <div class="social">
-               <a href="https://facebook.com/" rel="nofollow" target="_blank" class="social__item facebook"><svg
-                     class='icon icon-facebook'>
+               <a href="#" rel="nofollow" target="_blank" class="social__item facebook"><svg class='icon icon-facebook'>
                      <use xlink:href='#icon-facebook'></use>
                   </svg></a>
-               <a href="https://www.instagram.com/" rel="nofollow" target="_blank" class="social__item instagram"><svg
+               <a href="#" rel="nofollow" target="_blank" class="social__item instagram"><svg
                      class='icon icon-instagram'>
                      <use xlink:href='#icon-instagram'></use>
                   </svg></a>
-               <a href="https://www.youtube.com/" rel="nofollow" target="_blank" class="social__item youtube"><svg
-                     class='icon icon-youtube'>
+               <a href="#" rel="nofollow" target="_blank" class="social__item youtube"><svg class='icon icon-youtube'>
                      <use xlink:href='#icon-youtube'></use>
                   </svg></a>
             </div>
          </div>
+
          <p class="footer__copyright">
-            <span>All rights to articles, illustrations, and other materials belong to site.com and are protected by the
-               Law of Ukraine
-               "On Copyright and Related Rights". <br> When using materials, a link to the site is required!</span>
-            <span class="footer__developer">Website developer: <a href="#" target="_blank">diana</a></span>
+            <span>Всі права на статті, ілюстрації, інші матеріали належать site.com та охороняються законом України «Про
+               авторське право і суміжні права».<br>При використанні матеріалів посилання на сайт обов'язкове!</span>
+            <span class="footer__developer">Розробник сайту: <a href="#" target="_blank">Арсен</a></span>
          </p>
       </div>
    </div>
 
+
+
+
+
    <div class="cart-added-list">
       <button class="cart-added-list__btn" id="js-cart-added-btn">
-         <span class="cart-added-summ js-cart-added-summ show"></span>
+         <span class="cart-added-summ js-cart-added-summ show">2</span>
          <svg class='icon icon-cart-bag'>
             <use xlink:href='#icon-cart-bag'></use>
          </svg>

@@ -122,69 +122,83 @@
          </div>
       </div>
    </div>
-
-   <div class="article">
+   <div class="catalog" id="catalog">
       <div class="container">
-
-         <h2 class="article__title">Delivery and payment</h2>
-
-         <div class="page-content">
-            <p>
-               In our online Apple store, we do all our best to make the purchase process convenient and affordable for
-               our customers.
-               One of the most important aspects of this process is delivery and payment.
-            </p>
-            <h3>Delivery</h3>
-            <p>
-               We offer fast and reliable delivery of Apple products to your door. Our delivery specialists make sure
-               that your
-               purchase is delivered to you as soon as possible, so you can enjoy your new Apple gadgets almost
-               immediately.
-            </p>
-            <h3>Delivery options</h3>
-            <p>
-               We offer several delivery options for your convenience. You can choose one of them making your order:
-            </p>
-            <ul>
-               <li><strong>Courier delivery:</strong>
-                  Our couriers will bring your order directly to your home or your office.
-                  You can specify a delivery time that is convenient for you.
-               </li>
-               <li><strong>Self-pickup:</strong>
-                  If you want to pick your order up, you can select the pickup point, where your purchase will be
-                  waiting for you.
-               </li>
-            </ul>
-            <h3>Payment</h3>
-            <p>
-               We do all our best to make the payment process for your order simple and secure. We accept various
-               methods of payment,
-               including:
-            </p>
-            <ul>
-               <li><strong>Payment by credit card:</strong>
-                  You can pay for your order with credit or debit card. Your financial data is protected by the highest
-                  level of security.
-               </li>
-               <li><strong>Cash payment upon receipt:</strong>
-                  You can pay for your order in cash when you receive it from the courier.
-               </li>
-               <li><strong>Online payment:</strong>
-                  You can also use online payments for convenience.
-               </li>
-            </ul>
-            <p>
-               We believe that each our clients deserves the best service, so we do all our best to provide you with
-               fast delivery and
-               secure payment. Thank you for choosing our online Apple store!
-            </p>
+         <div class="catalog__header">
+            <div class="catalog__select-category" style="width: 80%;">
+               <div class="input-group">
+                  <svg class='icon icon-search' id="js-icon-search">
+                     <use xlink:href='#icon-search'></use>
+                  </svg>
+                  <input placeholder="Search" type="search" class="input" id="js-input-search">
+               </div>
+            </div>
+            <h3 class="catalog__products-summ" style="margin: 0;">Found products: <span id="count-products"></span>
+            </h3>
+         </div>
+         <div class="catalog__content js-catalog-cards" id="catalog-cards">
          </div>
       </div>
    </div>
-
-
-
-
+   <div class="hot-offers">
+      <div class="container">
+         <h2 class="hot-offers__title title-square">
+            <span class="title-square__icon"><svg class='icon icon-fire'>
+                  <use xlink:href='#icon-fire'></use>
+               </svg></span>
+            <span class="title-square__small">Special offers!</span>
+            <span class="title-square__main">Hot offers</span>
+         </h2>
+         <div class="hot-offers__cards js-hotoffers js-catalog-cards">
+         </div>
+      </div>
+   </div>
+   <div class="gallery">
+      <div class="container-fill">
+         <h2 class="gallery__title title-square">
+            <span class="title-square__small">Have a look at ours</span>
+            <span class="title-square__main">Instagram</span>
+         </h2>
+         <div class="gallery__items">
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/123/270/270" alt="" class="gallery__item-img">
+            </div>
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/124/270/270" alt="" class="gallery__item-img">
+            </div>
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/125/270/270" alt="" class="gallery__item-img">
+            </div>
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/126/270/270" alt="" class="gallery__item-img">
+            </div>
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/127/270/270" alt="" class="gallery__item-img">
+            </div>
+            <div class="gallery__item">
+               <a href="#" class="gallery__item-hover-box">
+                  <span class="gallery__item-hash-tag link-hover">#instagram-link</span>
+               </a>
+               <img src="https://picsum.photos/id/128/270/270" alt="" class="gallery__item-img">
+            </div>
+         </div>
+      </div>
+   </div>
    <div class="footer">
       <div class="container">
          <a href="index.html" class="logo">I-happy</a>
@@ -227,6 +241,7 @@
       </div>
    </div>
 
+
    <div class="cart-added-list">
       <button class="cart-added-list__btn" id="js-cart-added-btn">
          <span class="cart-added-summ js-cart-added-summ show"></span>
@@ -235,7 +250,7 @@
          </svg>
       </button>
       <div class="cart-added-list__item-list" id="js-cart-added-list">
-
+         <h2 class="no-result">No products found</h2>
       </div>
    </div>
 

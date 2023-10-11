@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Магазин техніки apple</title>
+   <title>Apple store</title>
 
    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
@@ -87,13 +87,13 @@
             <div class="navigation__left">
                <ul class="menu navigation__item-list">
                   <li class="menu__li navigation__item">
-                     <a href="index.html" class="menu__link link-hover">Головна</a>
+                     <a href="index.html" class="menu__link link-hover">Home</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="delivery.html" class="menu__link link-hover">Доставка і оплата</a>
+                     <a href="delivery.html" class="menu__link link-hover">Delivery and payment</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="contacts.html" class="menu__link link-hover">Контакти</a>
+                     <a href="contacts.html" class="menu__link link-hover">Contacts</a>
                   </li>
                </ul>
             </div>
@@ -103,21 +103,14 @@
             <div class="navigation__right">
                <ul class="navigation__item-list">
                   <li class="navigation__item">
-                     <a href="delivery.html" class="navigation__item-link">
+                     <a href="search.html" class="navigation__item-link">
                         <svg class='icon icon-search'>
                            <use xlink:href='#icon-search'></use>
                         </svg>
                      </a>
                   </li>
                   <li class="navigation__item">
-                     <a href="delivery.html" class="navigation__item-link">
-                        <svg class='icon icon-heart'>
-                           <use xlink:href='#icon-heart'></use>
-                        </svg>
-                     </a>
-                  </li>
-                  <li class="navigation__item">
-                     <a href="delivery.html" class="navigation__item-link">
+                     <a href="order.html" class="navigation__item-link">
                         <span class="cart-added-summ js-cart-added-summ show"></span>
                         <svg class='icon icon-cart-bag'>
                            <use xlink:href='#icon-cart-bag'></use>
@@ -134,89 +127,35 @@
       <div class="container">
          <div class="catalog__header">
             <div class="catalog__select-category dropdown">
-               <h3 class="dropdown-btn">Вибрати категорію</h3>
+               <h3 class="dropdown-btn">Category</h3>
                <div class="dropdown-content" id="js-category">
-
                </div>
             </div>
-            <h3 class="catalog__products-summ">Знайдено товарів: <span id="count-products"></span></h3>
+            <h3 class="catalog__products-summ">Found products: <span id="count-products"></span></h3>
          </div>
-
-         <div class="catalog__content" id="catalog-cards">
-
-
+         <div class="catalog__content js-catalog-cards" id="catalog-cards">
          </div>
-
       </div>
    </div>
-
-
-
-
    <div class="hot-offers">
       <div class="container">
-
          <h2 class="hot-offers__title title-square">
             <span class="title-square__icon"><svg class='icon icon-fire'>
                   <use xlink:href='#icon-fire'></use>
                </svg></span>
-            <span class="title-square__small">Акційні пропозиці!</span>
-            <span class="title-square__main">Гарячі пропозиції</span>
+            <span class="title-square__small">Special offers!</span>
+            <span class="title-square__main">Hot offers</span>
          </h2>
-
-         <div class="hot-offers__cards">
-            <div class="card-product">
-               <div class="card-product__img-hold">
-                  <img src="https://picsum.photos/360/270" alt="" class="card-product__img">
-               </div>
-               <div class="card-product__text-hold">
-                  <a href="#" class="card-product__title-link">Планшет Lenovo Tab M10 Plus 4/128 Grey</a>
-                  <span class="card-product__price">8 999 грн <small>12 999 грн</small></span>
-                  <a href="#" class="card-product__btn-add"><svg class='icon icon-cart'>
-                        <use xlink:href='#icon-cart-add'></use>
-                     </svg></a>
-               </div>
-            </div>
-            <div class="card-product">
-               <div class="card-product__img-hold">
-                  <img src="https://picsum.photos/360/270" alt="" class="card-product__img">
-               </div>
-               <div class="card-product__text-hold">
-                  <a href="#" class="card-product__title-link">Планшет Lenovo Tab M10 Plus 4/128 Grey</a>
-                  <span class="card-product__price">9 999 грн <small>12 999 грн</small></span>
-                  <a href="#" class="card-product__btn-add"><svg class='icon icon-cart'>
-                        <use xlink:href='#icon-cart-add'></use>
-                     </svg></a>
-               </div>
-            </div>
-            <div class="card-product">
-               <div class="card-product__img-hold">
-                  <img src="https://picsum.photos/360/270" alt="" class="card-product__img">
-               </div>
-               <div class="card-product__text-hold">
-                  <a href="#" class="card-product__title-link">Планшет Lenovo Tab M10 Plus 4/128 Grey</a>
-                  <span class="card-product__price">8 999 грн <small>15 399 грн</small></span>
-                  <a href="#" class="card-product__btn-add"><svg class='icon icon-cart'>
-                        <use xlink:href='#icon-cart-add'></use>
-                     </svg></a>
-               </div>
-            </div>
+         <div class="hot-offers__cards js-hotoffers js-catalog-cards">
          </div>
-
       </div>
    </div>
-
-
-
-
    <div class="gallery">
       <div class="container-fill">
-
          <h2 class="gallery__title title-square">
-            <span class="title-square__small">Перегляньте наш:</span>
+            <span class="title-square__small">Have a look at ours</span>
             <span class="title-square__main">Instagram</span>
          </h2>
-
          <div class="gallery__items">
             <div class="gallery__item">
                <a href="#" class="gallery__item-hover-box">
@@ -255,61 +194,49 @@
                <img src="https://picsum.photos/id/128/270/270" alt="" class="gallery__item-img">
             </div>
          </div>
-
       </div>
    </div>
-
-
-
-
-
-
    <div class="footer">
       <div class="container">
          <a href="index.html" class="logo">I-happy</a>
-
          <ul class="navbar-nav menu">
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="index.html#catalog">Каталог</a>
+               <a class="nav-link menu__link link-hover" href="index.html#catalog">Catalog</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="about.html">Про нас</a>
+               <a class="nav-link menu__link link-hover" href="about.html">About us</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="delivery.html">Доставка і оплата</a>
+               <a class="nav-link menu__link link-hover" href="delivery.html">Delivery and payment</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="contacts.html">Контакти</a>
+               <a class="nav-link menu__link link-hover" href="contacts.html">Contacts</a>
             </li>
          </ul>
-
          <div class="footer__social">
             <div class="social">
-               <a href="#" rel="nofollow" target="_blank" class="social__item facebook"><svg class='icon icon-facebook'>
+               <a href="https://facebook.com/" rel="nofollow" target="_blank" class="social__item facebook"><svg
+                     class='icon icon-facebook'>
                      <use xlink:href='#icon-facebook'></use>
                   </svg></a>
-               <a href="#" rel="nofollow" target="_blank" class="social__item instagram"><svg
+               <a href="https://www.instagram.com/" rel="nofollow" target="_blank" class="social__item instagram"><svg
                      class='icon icon-instagram'>
                      <use xlink:href='#icon-instagram'></use>
                   </svg></a>
-               <a href="#" rel="nofollow" target="_blank" class="social__item youtube"><svg class='icon icon-youtube'>
+               <a href="https://www.youtube.com/" rel="nofollow" target="_blank" class="social__item youtube"><svg
+                     class='icon icon-youtube'>
                      <use xlink:href='#icon-youtube'></use>
                   </svg></a>
             </div>
          </div>
-
          <p class="footer__copyright">
-            <span>Всі права на статті, ілюстрації, інші матеріали належать site.com та охороняються законом України «Про
-               авторське право і суміжні права».<br>При використанні матеріалів посилання на сайт обов'язкове!</span>
-            <span class="footer__developer">Розробник сайту: <a href="#" target="_blank">Арсен</a></span>
+            <span>All rights to articles, illustrations, and other materials belong to site.com and are protected by the
+               Law of Ukraine
+               "On Copyright and Related Rights". <br> When using materials, a link to the site is required!</span>
+            <span class="footer__developer">Website developer: <a href="#" target="_blank">diana</a></span>
          </p>
       </div>
    </div>
-
-
-
-
-
    <div class="cart-added-list">
       <button class="cart-added-list__btn" id="js-cart-added-btn">
          <span class="cart-added-summ js-cart-added-summ show"></span>
@@ -317,8 +244,8 @@
             <use xlink:href='#icon-cart-bag'></use>
          </svg>
       </button>
-      <div class="cart-added-list__item-list show" id="js-cart-added-list">
-         <h2 class="no-result">Товарів не знайдено</h2>
+      <div class="cart-added-list__item-list" id="js-cart-added-list">
+         <h2 class="no-result">No products found</h2>
       </div>
    </div>
 

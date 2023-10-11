@@ -37,12 +37,17 @@ const shop = function () {
 
 
    // Змінні для роботи об'єкту
-   this.catalog = document.querySelector('#catalog-cards');
+   this.catalog = document.querySelectorAll('.js-catalog-cards');
+   this.catalogMain = document.querySelector('#catalog-cards');
    this.category = document.querySelector('#js-category');
    this.countProducts = document.querySelector('#count-products');
    this.displayProductCart = document.querySelector('#js-cart-added-list');
    this.cartBtn = document.querySelector('#js-cart-added-btn');
    this.cartProductNum = document.querySelectorAll('.js-cart-added-summ');
+   this.inputSearch = document.querySelector('#js-input-search');
+
+   // Змінна для timeout
+   this.idTimeout = 0;
 
    // Масив обранних товарів
    this.cart = this.getLocal('cart');
@@ -50,60 +55,64 @@ const shop = function () {
    // Посилання для api
    this.apiLink = 'https://64fecbcdf8b9eeca9e291654.mockapi.io/';
    this.apiCatalog = this.apiLink + 'catalog';
+   this.apiCatalogHotOffer = this.apiCatalog + '?hotoffer=yes';
+   this.apiSearch = this.apiCatalog + '?search=';
    this.apiCategories = this.apiLink + 'categories';
 
-
-
    // Виводимо всі товари в html
-   this.diplayProducts = (array) => {
+   this.diplayProducts = (array, viewInThisBlock = this.catalogMain) => {
 
-      // Очищуємо карточки перед виводом
-      this.catalog.innerHTML = '';
+      // Перевірка на існування
+      if (viewInThisBlock) {
 
-      // Оновлюємо кількість товарів
-      this.displayCountProducts(array);
+         // Очищуємо карточки перед виводом
+         viewInThisBlock.innerHTML = '';
 
-      // Перевіряємо масив на пустоту
-      if (array.length == 0) {
+         // Перевіряємо масив на пустоту
+         if (array.length == 0) {
 
-         // Виводимо повідомлення NO RESULTS
-         this.catalog.innerHTML = `<h2 class="no-result">Товарів не знайдено</h2>`;
+            // Виводимо повідомлення NO RESULTS
+            viewInThisBlock.innerHTML = `<h2 class="no-result">No products found</h2>`;
 
-      } else {
+         } else {
 
-         // Перебираємо товари для виводу
-         array.forEach(({ img, title, price, oldprice, hotoffer, catid, id }) => {
+            // Перебираємо товари для виводу
+            array.forEach(({ img, title, price, oldprice, hotoffer, catid, id }) => {
 
-            // Виводимо товари 
-            this.catalog.insertAdjacentHTML('beforeend', `<div class="card-product">
-                                                <div class="card-product__img-hold">
-                                                   <img src="img/catalog/${img}" alt="" class="card-product__img js-product-img">
-                                                </div>
-                                                <div class="card-product__text-hold">
-                                                   <a href="#" class="card-product__title-link">${title}</a>
-                                                   <span class="card-product__price">${price} грн <small>${oldprice} грн</small></span>
-                                                   <a href="#" class="card-product__btn-add js-icon-cart" data-id="${id}" data-title="${title}" data-price="${price}" data-img="${img}" data-count="1"><svg class='icon icon-cart'><use xlink:href='#icon-cart-add'></use></svg></a>
-                                                </div>
-                                             </div>`)
-         });
+               // Виводимо товари 
+               viewInThisBlock.insertAdjacentHTML('beforeend', `<div class="card-product">
+                                                   <div class="card-product__img-hold d-flex-center">
+                                                      <img src="img/catalog/${img}" alt="" class="card-product__img js-product-img">
+                                                   </div>
+                                                   <div class="card-product__text-hold">
+                                                      <a href="#" class="card-product__title-link">${title}</a>
+                                                      <span class="card-product__price">${price} USD <small>${oldprice} USD</small></span>
+                                                      <a href="#" class="card-product__btn-add js-icon-cart" data-id="${id}" data-title="${title}" data-price="${price}" data-img="${img}" data-count="1"><svg class='icon icon-cart'><use xlink:href='#icon-cart-add'></use></svg></a>
+                                                   </div>
+                                                </div>`)
+            });
+         }
       }
-
    }
 
 
    // Вивід всіх категорій в html
    this.diplayCategory = (array) => {
 
-      //Виводимо категорії
-      this.category.insertAdjacentHTML('beforeend', `<a href="#" class="dropdown-item">Скинути вибір</a>`)
-
-      // Перебираємо категорії
-      array.forEach(({ id, title }) => {
+      //Перевірка на існування
+      if (this.category) {
 
          //Виводимо категорії
-         this.category.insertAdjacentHTML('beforeend', `<a href="${id}" class="dropdown-item">${title}</a>`)
+         this.category.insertAdjacentHTML('beforeend', `<a href="#" class="dropdown-item">Reset selection</a>`)
 
-      })
+         // Перебираємо категорії
+         array.forEach(({ id, title }) => {
+
+            //Виводимо категорії
+            this.category.insertAdjacentHTML('beforeend', `<a href="${id}" class="dropdown-item">${title}</a>`)
+
+         })
+      }
    };
 
 
@@ -125,6 +134,27 @@ const shop = function () {
 
             // Перебираємо товари для виводу
             this.diplayProducts(products);
+
+            // Оновлюємо кількість товарів
+            this.displayCountProducts(products);
+
+         })
+   }
+
+
+   // Вивід акційних товарів
+   this.viewPorductsHot = () => {
+
+      // Витягуємо товари з бази даних
+      fetch(this.apiCatalogHotOffer)
+         .then(res => res.json())
+         .then((products) => {
+
+            // Отримуємо елемент блоку з акційними пропозиціями
+            const hotOffer = document.querySelector('.js-hotoffers');
+
+            // Перебираємо товари для виводу
+            this.diplayProducts(products, hotOffer);
 
          })
    }
@@ -163,6 +193,9 @@ const shop = function () {
 
             // Виводим товари
             this.diplayProducts(products);
+
+            // Оновлюємо кількість товарів
+            this.displayCountProducts(products);
 
          })
    }
@@ -218,7 +251,7 @@ const shop = function () {
       //отримуємо атрибут з кнопки, щоб зв'язати з інпутом
       this.dataInputVal = this.el.getAttribute('data-input');
 
-      //????????document.querySelector???????  зберігаю необхідний інпут
+      // Зберігаю необхідний інпут
       this.input = document.querySelector(this.dataInputVal);
 
       // Отримуємо поточне значення інпута
@@ -270,7 +303,7 @@ const shop = function () {
                                                                            <p class="cart-added-list__item-text-hold">
                                                                               <a href="#" class="cart-added-list__item-title-link">${title}</a>
                                                                               <span class="cart-added-list__item-meta-list">
-                                                                                 <span class="cart-added-list__item-meta">Ціна: ${price} грн</span>
+                                                                                 <span class="cart-added-list__item-meta">Ціна: ${price} USD</span>
                                                                               </span>
                                                                            </p>
                                                                            <input type="text" class="cart-added-list__item-count js-input" placeholder="0" value="${count}" id="input-count-${id}">
@@ -325,7 +358,7 @@ const shop = function () {
 
    // Функція для обробок кліків на елементі корзини
    this.handleProductCartClick = (event) => {
-   // Обробник зміни кіл-ті товару
+      // Обробник зміни кіл-ті товару
       // Поточний елемент по якому був клік
       this.el = event.target;
       // Перевіряєо чи клік був по кнопкам +- кіл-ті товару
@@ -354,12 +387,47 @@ const shop = function () {
 
    }
 
+   // Звертаємось до апі пошуку товарів
+   this.searchFetchProducts = (inputValue) => {
+
+      // Витягуємо товари з бази даних
+      fetch(this.apiSearch + inputValue)
+         .then(res => res.json())
+         .then((products) => {
+
+            // Перебираємо товари для виводу
+            this.diplayProducts(products);
+
+            // Оновлюємо кількість товарів
+            this.displayCountProducts(products);
+
+         })
+   }
+
+   // Пошук товарів при події введеня користувачем значення
+   this.searchProducts = (e) => {
+
+      // Спочатку видаляємо попередній таймаут, якщо він існує
+      clearTimeout(this.idTimeout);
+
+      this.idTimeout = setTimeout(() => {
+
+         // Витягуємо значення з поля пошуку
+         const inputValue = e.target.value;
+
+         // Викликаємо функцію звернення до арі
+         this.searchFetchProducts(inputValue);
+      }, 700)
+   }
 
    // Створюємо метод об'єкту який запускає весь функціонал 
    this.init = () => {
 
       // Виводимо товари при завантаженні
       this.viewPorducts();
+
+      // Виводимо товари при завантаженні
+      this.viewPorductsHot();
 
       // Виводимо категорії при завантаженні
       this.viewCategories();
@@ -368,10 +436,13 @@ const shop = function () {
       this.viewCartProducts();
 
       // Слідкуємо за кліком по категоріях
-      this.category.onclick = this.setCategoryProducts;
+      if (this.category)
+         this.category.onclick = this.setCategoryProducts;
 
       // Слідкуємо за кліком по картці продукту
-      this.catalog.onclick = this.onPressCartBtn;
+      this.catalog.forEach((el) => {
+         el.onclick = this.onPressCartBtn;
+      })
 
       // Слідкую за обробниками подій
       this.displayProductCart.onclick = this.handleProductCartClick;
@@ -382,6 +453,9 @@ const shop = function () {
       // Ховаємо і показуємо корзину
       this.cartBtn.onclick = () => this.displayProductCart.classList.toggle('show');
 
+      // Слідкуємо за полем пошуку
+      if (this.inputSearch)
+         this.inputSearch.oninput = this.searchProducts;
    }
 }
 
@@ -391,5 +465,3 @@ const shopInit = new shop();
 // Запускаємо перший метод в якому і буде збиратися весь функціонал
 shopInit.init();
 
-
-// Видалення товарів з корзини
