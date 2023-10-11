@@ -124,16 +124,17 @@
    </div>
    <div class="catalog" id="catalog">
       <div class="container">
-         <div class="catalog__header">
-            <div class="catalog__select-category" style="width: 80%;">
-               <div class="input-group">
+         <div class="catalog__header catalog__header-search">
+            <div class="catalog__select-category catalog__select-category-search" style="width: 80%;">
+               <div class="input-group input-group-search">
                   <svg class='icon icon-search' id="js-icon-search">
                      <use xlink:href='#icon-search'></use>
                   </svg>
-                  <input placeholder="Search" type="search" class="input" id="js-input-search">
+                  <input placeholder="Search" type="search" class="input input-search" id="js-input-search">
                </div>
             </div>
-            <h3 class="catalog__products-summ" style="margin: 0;">Found products: <span id="count-products"></span>
+            <h3 class="catalog__products-summ catalog__products-summ-search" style="margin: 0;">Found products: <span
+                  id="count-products"></span>
             </h3>
          </div>
          <div class="catalog__content js-catalog-cards" id="catalog-cards">

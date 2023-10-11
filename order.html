@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Магазин техніки apple</title>
+   <title>Apple store</title>
 
    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
@@ -87,13 +87,13 @@
             <div class="navigation__left">
                <ul class="menu navigation__item-list">
                   <li class="menu__li navigation__item">
-                     <a href="index.html" class="menu__link link-hover">Головна</a>
+                     <a href="index.html" class="menu__link link-hover">Home</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="delivery.html" class="menu__link link-hover">Доставка і оплата</a>
+                     <a href="delivery.html" class="menu__link link-hover">Delivery and payment</a>
                   </li>
                   <li class="menu__li navigation__item">
-                     <a href="contacts.html" class="menu__link link-hover">Контакти</a>
+                     <a href="contacts.html" class="menu__link link-hover">Contacts</a>
                   </li>
                </ul>
             </div>
@@ -122,100 +122,86 @@
          </div>
       </div>
    </div>
-
-
-
-
    <div class="article">
       <div class="container">
-
-         <h2 class="article__title">Доставка і оплата</h2>
-
-         <div class="page-content">
-            <p>Будь ласка, заповніть форму для оформлення вашого замовлення:</p>
-
-            <form id="order-form">
+         <h2 class="article__title article__title-order">Delivery and payment</h2>
+         <div class="page-content page-content-order">
+            <p>
+               Please fill out the form to complete your order:
+            </p>
+            <form class="order-form">
                <div class="form-group">
-                  <label for="name">Ім'я:</label>
-                  <input type="text" id="name" name="name" required>
+                  <label for="name" class="order-text">Name:</label>
+                  <input type="text" id="name" name="name" required class="order-input" placeholder="">
                </div>
-
                <div class="form-group">
-                  <label for="phone">Телефон:</label>
-                  <input type="tel" id="phone" name="phone" required>
+                  <label for="phone" class="order-text">Phone number:</label>
+                  <input type="tel" id="phone" name="phone" required class="order-input" placeholder="">
                </div>
-
                <div class="form-group">
-                  <label for="address">Адреса доставки:</label>
-                  <textarea id="address" name="address" rows="4" required></textarea>
+                  <label for="phone" class="order-text">Email:</label>
+                  <input type="email" id="email" name="email" required class="order-input" placeholder="">
                </div>
-
-               <button type="submit">Замовити</button>
+               <div class="form-group">
+                  <label for="address" class="order-text">Delivery address:</label>
+                  <textarea id="address" name="address" rows="4" required class="order-input" placeholder=""></textarea>
+               </div>
+               <button type="submit" class="order-btn d-flex-center">Order now</button>
             </form>
          </div>
-
-
       </div>
    </div>
-
-
-
-
    <div class="footer">
       <div class="container">
          <a href="index.html" class="logo">I-happy</a>
-
          <ul class="navbar-nav menu">
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="index.html#catalog">Каталог</a>
+               <a class="nav-link menu__link link-hover" href="index.html#catalog">Catalog</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="about.html">Про нас</a>
+               <a class="nav-link menu__link link-hover" href="about.html">About us</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="delivery.html">Доставка і оплата</a>
+               <a class="nav-link menu__link link-hover" href="delivery.html">Delivery and payment</a>
             </li>
             <li class="nav-item menu__li">
-               <a class="nav-link menu__link link-hover" href="contacts.html">Контакти</a>
+               <a class="nav-link menu__link link-hover" href="contacts.html">Contacts</a>
             </li>
          </ul>
-
          <div class="footer__social">
             <div class="social">
-               <a href="#" rel="nofollow" target="_blank" class="social__item facebook"><svg class='icon icon-facebook'>
+               <a href="https://facebook.com/" rel="nofollow" target="_blank" class="social__item facebook"><svg
+                     class='icon icon-facebook'>
                      <use xlink:href='#icon-facebook'></use>
                   </svg></a>
-               <a href="#" rel="nofollow" target="_blank" class="social__item instagram"><svg
+               <a href="https://www.instagram.com/" rel="nofollow" target="_blank" class="social__item instagram"><svg
                      class='icon icon-instagram'>
                      <use xlink:href='#icon-instagram'></use>
                   </svg></a>
-               <a href="#" rel="nofollow" target="_blank" class="social__item youtube"><svg class='icon icon-youtube'>
+               <a href="https://www.youtube.com/" rel="nofollow" target="_blank" class="social__item youtube"><svg
+                     class='icon icon-youtube'>
                      <use xlink:href='#icon-youtube'></use>
                   </svg></a>
             </div>
          </div>
-
          <p class="footer__copyright">
-            <span>Всі права на статті, ілюстрації, інші матеріали належать site.com та охороняються законом України «Про
-               авторське право і суміжні права».<br>При використанні матеріалів посилання на сайт обов'язкове!</span>
-            <span class="footer__developer">Розробник сайту: <a href="#" target="_blank">Арсен</a></span>
+            <span>All rights to articles, illustrations, and other materials belong to site.com and are protected by the
+               Law of Ukraine
+               "On Copyright and Related Rights". <br> When using materials, a link to the site is required!</span>
+            <span class="footer__developer">Website developer: <a href="#" target="_blank">diana</a></span>
          </p>
       </div>
    </div>
 
 
-
-
-
    <div class="cart-added-list">
       <button class="cart-added-list__btn" id="js-cart-added-btn">
-         <span class="cart-added-summ js-cart-added-summ show">2</span>
+         <span class="cart-added-summ js-cart-added-summ show"></span>
          <svg class='icon icon-cart-bag'>
             <use xlink:href='#icon-cart-bag'></use>
          </svg>
       </button>
       <div class="cart-added-list__item-list" id="js-cart-added-list">
-
       </div>
    </div>
 
