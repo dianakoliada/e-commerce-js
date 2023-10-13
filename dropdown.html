@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <style>
+      .dropdown {
+         --btn-h: 50px;
+         position: relative;
+         display: inline-flex;
+      }
+
+      .dropdown-btn {
+         color: #000;
+         padding: 0 0;
+         border: none;
+         cursor: pointer;
+         position: relative;
+         z-index: 2;
+         min-height: var(--btn-h);
+         padding-right: 28px;
+         display: flex;
+         align-items: flex-start;
+         font-size: 26px;
+      }
+
+      .dropdown-btn::after {
+         content: '\203A';
+         position: absolute;
+         top: -1px;
+         right: 0;
+         transform: rotate(90deg);
+         font-size: 120%;
+      }
+
+      .dropdown-content {
+         opacity: 0;
+         transform: scale(0);
+         transition: 0.25s;
+         padding: 16px 14px;
+         position: absolute;
+         top: 58px;
+         left: -6px;
+         background-color: #ffffff;
+         min-width: 160px;
+         z-index: 1;
+         box-shadow: 0 5px 22px 0 rgba(208, 219, 229, .62), 0 2px 3px 0 rgba(107, 132, 160, .18), 0 5px 5px 0 rgba(237, 239, 242, .36);
+         border-radius: 15px;
+      }
+
+      .dropdown-content.show {
+         opacity: 1;
+         transform: scale(100%);
+      }
+
+      .dropdown-content .dropdown-item {
+         display: block;
+         padding: 8px 16px;
+         text-decoration: none;
+         color: #6C798E;
+         transition: 0.3s;
+         font-weight: 600;
+         font-size: 14px;
+         min-width: 200px;
+         border-radius: 10px;
+      }
+
+      .dropdown-content .dropdown-item:hover {
+         background-color: #EBF1FC;
+         color: var(--pr);
+      }
+   </style>
+
+   <div class="catalog__select-category dropdown">
+      <h3 class="dropdown-btn">Category</h3>
+      <div class="dropdown-content" id="js-category">
+         <a href="#" class="dropdown-item">Reset selection</a>
+         <a href="1" class="dropdown-item">iphone</a>
+         <a href="2" class="dropdown-item">MacBook</a>
+         <a href="3" class="dropdown-item">Apple watch</a>
+         <a href="4" class="dropdown-item">iPad</a>
+         <a href="5" class="dropdown-item">Airpods</a>
+         <a href="6" class="dropdown-item">Accessories</a>
+      </div>
+   </div>
+
+   <script>
+      const btn = document.querySelector('.dropdown-btn');
+      const content = document.querySelector('.dropdown-content');
+
+      btn.onclick = () => content.classList.toggle('show');
+   </script>
+
+
+
+</body>
+
+</html>

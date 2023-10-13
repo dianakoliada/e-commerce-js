@@ -173,8 +173,8 @@ svg {
    transform: scale(0);
    padding: 16px 14px;
    position: absolute;
-   top: -50px;
-   left: 0;
+   top: 58px;
+   left: -6px;
    background-color: #ffffff;
    min-width: 160px;
    z-index: 1;
@@ -182,10 +182,9 @@ svg {
    border-radius: 15px;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content.show {
    opacity: 1;
    transform: scale(100%);
-   top: var(--btn-h);
 }
 
 .dropdown-content .dropdown-item {
@@ -776,6 +775,10 @@ svg {
    right: var(--item-indent);
 }
 
+.hide {
+   display: block;
+}
+
 .cart-added-list .cart-added-list__item {
    --img-bdrs: 6px;
    --img-size: 80px;
@@ -908,11 +911,11 @@ svg {
 }
 
 .cart-added-list .cart-added-list__item-btn-minus::before {
-   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%236a6ff7' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
 }
 
 .cart-added-list .cart-added-list__item-btn-plus::before {
-   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236a6ff7' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
 }
 
 .cart-added-list__item-count {
@@ -1093,6 +1096,13 @@ svg {
    font-size: 32px;
 }
 
+@media (max-width: 542px) {
+   .article .page-content h3 {
+      font-size: 25px;
+   }
+
+}
+
 .input-group {
    --max-width: 100%;
    --input-radius: 8px;
@@ -1152,7 +1162,9 @@ svg {
 }
 
 @media (max-width: 542px) {
-   .article .article__title-order {
+
+   .article .article__title-order,
+   .article .article__title {
       font-size: 32px;
    }
 }

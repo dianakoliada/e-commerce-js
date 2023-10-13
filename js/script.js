@@ -40,11 +40,13 @@ const shop = function () {
    this.catalog = document.querySelectorAll('.js-catalog-cards');
    this.catalogMain = document.querySelector('#catalog-cards');
    this.category = document.querySelector('#js-category');
+   this.categoryBtn = document.querySelector('.dropdown-btn');
    this.countProducts = document.querySelector('#count-products');
    this.displayProductCart = document.querySelector('#js-cart-added-list');
    this.cartBtn = document.querySelector('#js-cart-added-btn');
    this.cartProductNum = document.querySelectorAll('.js-cart-added-summ');
    this.inputSearch = document.querySelector('#js-input-search');
+
 
    // Змінна для timeout
    this.idTimeout = 0;
@@ -452,6 +454,8 @@ const shop = function () {
 
       // Ховаємо і показуємо корзину
       this.cartBtn.onclick = () => this.displayProductCart.classList.toggle('show');
+
+      this.categoryBtn.onclick = () => this.category.classList.toggle('show');
 
       // Слідкуємо за полем пошуку
       if (this.inputSearch)
